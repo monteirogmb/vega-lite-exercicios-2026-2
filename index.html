@@ -1,54 +1,9 @@
-barras_graf = {
-  const barras = vl.markBar()
-  .data(life_style_data)
-  .encode(
-    vl.x()
-      .fieldN('Workout_Type')
-      .title('Tipo de Treino')
-      .sort('y'),
-    vl.y()
-      .fieldQ('Max_BPM')
-      .aggregate('mean')
-      .title('Batimentos Máximo'),
-    vl.tooltip([
-      { field: 'Workout_Type', type: 'nominal', title: 'Tipo de Treino' },
-      { field: 'Max_BPM', type: 'quantitative', aggregate: 'mean', title: 'Batimentos Máximo', format: '.2f' }
-    ])
-  )
-  .width({ step: 60 })
- 
-  return barras.render()
-}
+# Questão 1
 
-pontos = {
-  const pnts = vl.markCircle({ opacity: 0.5, size: 30 })
-    .data(life_style_data)
-    .transform(
-      vl.filter("datum.Gender == 'Male' || datum.Gender == 'Female'")
-    )
-    .encode(
-      vl.x()
-        .fieldQ('Max_BPM')
-        .title('Batimentos Máximo')
-        .scale({ zero: false }),
-      vl.y()
-        .fieldQ('Calories_Burned')
-        .title('Calorias Queimadas')
-        .scale({ zero: false }),
-      vl.column()
-        .fieldN('Gender')
-        .title('Gênero'),
-      vl.color()
-        .fieldN('Gender')
-        .legend(null),
-      vl.tooltip([
-        { field: 'Gender', type: 'nominal', title: 'Gênero' },
-        { field: 'Max_BPM', type: 'quantitative', title: 'Batimentos Máximo' },
-        { field: 'Calories_Burned', type: 'quantitative', title: 'Calorias Queimadas' }
-      ])
-    )
-    .width(300)
-    .height(300)
- 
-    return pnts.render()
-}
+<iframe width="100%" height="451" frameborder="0"
+  src="https://observablehq.com/embed/15a019ecd4ccb86a?cells=barras_graf"></iframe>
+
+# Questão 2
+<iframe width="100%" height="471" frameborder="0"
+  src="https://observablehq.com/embed/15a019ecd4ccb86a?cells=pontos"></iframe>
+  
